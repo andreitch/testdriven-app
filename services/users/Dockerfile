@@ -1,5 +1,10 @@
 FROM python:3.7.3-slim
 
+# install netcat
+RUN apt-get update && \
+    apt-get -y install netcat && \
+    apt-get clean
+
 # set working directory
 WORKDIR /usr/src/app
 
