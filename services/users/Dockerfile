@@ -1,0 +1,18 @@
+FROM python:3.7.3-slim
+
+# set working directory
+WORKDIR /usr/src/app
+
+# add and install requirements
+COPY ./requirements.txt /usr/src/app/requirements.txt
+RUN pip install -r requirements.txt
+
+# add entrypoint.sh
+COPY ./entrypoint.sh /tmp/entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
+
+# add app
+COPY . /usr/src/app
+
+# run server
+CMD ["/tmp/entrypoint.sh"]
