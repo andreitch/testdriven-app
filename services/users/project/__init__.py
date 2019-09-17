@@ -1,6 +1,5 @@
 import os
-import datetime
-from flask import Flask, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -15,7 +14,7 @@ def create_app(script_info=None):
     # set config
     app_settings = os.getenv('APP_SETTINGS')
     app.config.from_object(app_settings)
-    
+
     # set up extensions
     db.init_app(app)
 
