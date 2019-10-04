@@ -18,8 +18,8 @@ services:
   - docker
 
 env:
-  DOCKER_COMPOSE_VERSION: 1.23.2
-  SECRET_KEY: my_precious
+  global:
+    DOCKER_COMPOSE_VERSION: 1.23.2
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -30,10 +30,12 @@ before_install:
 before_script:
   - export TEST_URL=http://127.0.0.1
   - export REACT_APP_USERS_SERVICE_URL=http://127.0.0.1
+  - export SECRET_KEY=my_precious
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
   - docker-compose -f docker-compose-prod.yml up --build -d
+  - docker-compose -f docker-compose-prod.yml exec users python manage.py recreate_db
 
 script:
   - bash test.sh stage
