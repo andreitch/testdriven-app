@@ -12,7 +12,7 @@ const NavBar = props => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <LinkContainer to="/">
+        <LinkContainer exact to="/">
           <NavItem eventKey={1}>Home</NavItem>
         </LinkContainer>
         <LinkContainer to="/about">
