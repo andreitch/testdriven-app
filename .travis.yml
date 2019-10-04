@@ -19,6 +19,7 @@ services:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
+  SECRET_KEY: my_precious
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
