@@ -23,6 +23,7 @@ class Form extends Component {
   }
   componentDidMount() {
     this.clearForm();
+    this.resetRules();
   }
   componentWillReceiveProps(nextProps) {
     if (this.props.formType !== nextProps.formType) {
@@ -124,7 +125,15 @@ class Form extends Component {
         this.props.loginUser(res.data.auth_token);
       })
       .catch(err => {
-        console.log(err);
+        if (formType === "login") {
+          this.props.createMessage(
+            "User with provided email or password does not exist.",
+            "danger"
+          );
+        }
+        if (formType === "register") {
+          this.props.createMessage("That user already exists.", "danger");
+        }
       });
   }
   render() {
@@ -136,7 +145,7 @@ class Form extends Component {
       formRules = this.state.registerFormRules;
     }
     return (
-      <div>
+      <div className="col-md-offset-3 col-md-6">
         <h1 style={{ textTransform: "capitalize" }}>{this.props.formType}</h1>
         <hr />
         <br />
