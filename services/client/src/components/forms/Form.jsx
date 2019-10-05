@@ -90,7 +90,7 @@ class Form extends Component {
       const formRules = self.state.loginFormRules;
       if (formData.email.length > 0) formRules[0].valid = true;
       if (formData.password.length > 0) formRules[1].valid = true;
-      self.setState({ registerFormRules: formRules });
+      self.setState({ loginFormRules: formRules });
       if (self.allTrue()) self.setState({ valid: true });
     }
   }
