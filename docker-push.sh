@@ -1,14 +1,10 @@
 #!/bin/sh
-echo $TRAVIS_PULL_REQUEST
-echo TRAVIS_PULL_REQUEST
-echo $TRAVIS_BRANCH
 
 if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]
 then
 
     if [ "$TRAVIS_BRANCH" == "staging" ] || [ "$TRAVIS_BRANCH" == "production" ]
-    then
-        echo $TRAVIS_BRANCH
+    then    
         curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
         unzip awscli-bundle.zip
         ./awscli-bundle/install -b ~/bin/aws
