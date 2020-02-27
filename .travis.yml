@@ -1,8 +1,8 @@
 language: node_js
 node_js: 
-  - '10'
+  - '9'
 
-dist: bionic
+dist: trusty
 services:
   - xvfb
   - docker
@@ -42,10 +42,10 @@ before_script:
   - docker-compose -f docker-compose-$DOCKER_ENV.yml exec users python manage.py recreate_db
 
 script:
-  - bash test.sh stage
+  - bash test.sh $DOCKER_ENV
 
 after_script:
-  - docker-compose -f docker-compose-prod.yml down
+  - docker-compose -f docker-compose-stage.yml down
 
 after_success:
   - bash ./docker-push.sh
