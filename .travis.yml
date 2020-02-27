@@ -38,8 +38,6 @@ before_script:
   - export SECRET_KEY=my_precious
   - export DISPLAY=:99.0
   - export DOCKER_ENV=$(if [ "$TRAVIS_BRANCH" == "production" ]; then echo "prod"; else echo "stage"; fi)
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3
   - docker-compose -f docker-compose-$DOCKER_ENV.yml up --build -d
   - docker-compose -f docker-compose-$DOCKER_ENV.yml exec users python manage.py recreate_db
 
