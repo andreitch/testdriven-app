@@ -1,11 +1,7 @@
 language: node_js
 node_js: '9'
 
-before_install:
-  - stty cols 80
-
 dist: trusty
-sudo: required
 
 addons:
   apt:
@@ -32,6 +28,7 @@ env:
     SWAGGER_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/swagger
 
 before_install:
+  - stty cols 80
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
