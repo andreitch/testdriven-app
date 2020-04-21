@@ -16,7 +16,7 @@ env:
     MAIN_REPO=https://github.com/andreitch/testdriven-app.git
     USERS=exercises-users
     USERS_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/users
-    USERS_DB=texercises-users_db
+    USERS_DB=exercises-users_db
     USERS_DB_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/users/project/db
     CLIENT=exercises-client
     CLIENT_REPO=${MAIN_REPO}#${TRAVIS_BRANCH}:services/client
