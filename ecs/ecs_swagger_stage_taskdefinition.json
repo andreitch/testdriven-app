@@ -1,0 +1,31 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "swagger",
+      "image": "%s.dkr.ecr.us-east-2.amazonaws.com/exercises-swagger:staging",
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "exercises-swagger-stage",
+          "awslogs-region": "us-east-2"
+        }
+      },
+      "portMappings": [
+        {
+          "hostPort": 0,
+          "protocol": "tcp",
+          "containerPort": 8080
+        }
+      ],
+      "environment": [
+        {
+          "name": "URL",
+          "value": "swagger.json"
+        }
+      ],
+      "memoryReservation": 300
+    }
+  ],
+  "family": "exercises-swagger-stage-td"
+}
