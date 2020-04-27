@@ -33,7 +33,7 @@ then
 
         deploy_cluster() {
 
-            cluster="test-driven-staging-cluster"
+            cluster="exercises-staging-cluster"
 
             # users
             service="exercises-users-stage-service"
