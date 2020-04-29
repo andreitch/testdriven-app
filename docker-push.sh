@@ -17,6 +17,11 @@ then
     then
         export REACT_APP_USERS_SERVICE_URL="http://exercises-staging-alb-1585357624.us-east-2.elb.amazonaws.com"
     fi
+    if [ "$TRAVIS_BRANCH" == "production" ]
+    then
+        export REACT_APP_USERS_SERVICE_URL="http://exercises-production-alb-1689891405.us-east-2.elb.amazonaws.com"
+"
+    fi
     if [ "$TRAVIS_BRANCH" == "staging" ] || [ "$TRAVIS_BRANCH" == "production" ]
     then
         # users
