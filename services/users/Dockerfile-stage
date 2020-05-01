@@ -13,11 +13,11 @@ COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 
 # add entrypoint.sh
-COPY ./entrypoint-prod.sh /tmp/entrypoint-prod.sh
-RUN chmod +x /tmp/entrypoint-prod.sh
+COPY ./entrypoint-stage.sh /tmp/entrypoint-stage.sh
+RUN chmod +x /tmp/entrypoint-stage.sh
 
 # add app
 COPY . /usr/src/app
 
 # run server
-CMD ["/tmp/entrypoint-prod.sh"]
+CMD ["/tmp/entrypoint-stage.sh"]
